@@ -4,6 +4,15 @@
   "description": "A tactile, stationery-inspired component system for React + Tailwind CSS v4. Copy the source (shadcn-style) or import compiled modules.",
   "type": "module",
   "license": "MIT",
+  "author": "sagar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagar-droid/papercraft-ui.git"
+  },
+  "homepage": "https://github.com/sagar-droid/papercraft-ui#readme",
+  "bugs": {
+    "url": "https://github.com/sagar-droid/papercraft-ui/issues"
+  },
   "keywords": [
     "react",
     "tailwindcss",
