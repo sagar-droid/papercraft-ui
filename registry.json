@@ -1,0 +1,59 @@
+{
+  "components": {
+    "alert": {
+      "description": "Margin-ruled note for info, warnings and errors.",
+      "files": ["alert.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "badge": {
+      "description": "Manila tags, inked rubber stamps and highlighter swipes.",
+      "files": ["badge.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "button": {
+      "description": "Interactive stamp that presses flat when clicked.",
+      "files": ["button.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "card": {
+      "description": "A sheet of cardstock with optional texture, washi tape or dog-ear.",
+      "files": ["card.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "checkbox": {
+      "description": "Native checkbox with a hand-drawn tick.",
+      "files": ["checkbox.tsx"],
+      "dependencies": []
+    },
+    "input": {
+      "description": "Boxed field or single notebook rule.",
+      "files": ["input.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "label": {
+      "description": "Typewriter form label.",
+      "files": ["label.tsx"],
+      "dependencies": []
+    },
+    "separator": {
+      "description": "Perforated, dotted, solid or double rule.",
+      "files": ["separator.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "sticky-note": {
+      "description": "Tilted sticky note, optionally taped down.",
+      "files": ["sticky-note.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
+    "tabs": {
+      "description": "Manila-folder tabs with keyboard navigation.",
+      "files": ["tabs.tsx"],
+      "dependencies": []
+    },
+    "textarea": {
+      "description": "Boxed or ruled notebook textarea.",
+      "files": ["textarea.tsx"],
+      "dependencies": ["class-variance-authority"]
+    }
+  }
+}

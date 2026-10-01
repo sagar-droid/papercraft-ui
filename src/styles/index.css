@@ -1,0 +1,7 @@
+/*
+ * Entry for the *compiled* package (`import "papercraft-ui/styles.css"` from your CSS).
+ * Pulls in the tokens and tells Tailwind to scan the prebuilt components for class names.
+ * If you copied components with the CLI, you don't need this file — use papercraft.css.
+ */
+@import "./papercraft.css";
+@source "../../dist";

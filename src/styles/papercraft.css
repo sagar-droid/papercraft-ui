@@ -1,0 +1,200 @@
+/*
+ * Papercraft UI — design tokens, theme mapping and tactile utilities.
+ * Requires Tailwind CSS v4. Import this *after* `@import "tailwindcss";`.
+ *
+ * Raw tokens live on :root as --paper-* variables so they can be swapped per theme.
+ * `@theme inline` maps them onto Tailwind utilities:
+ *   bg-paper, bg-paper-muted, bg-paper-accent, bg-paper-sheet
+ *   border-pencil, border-carbon
+ *   text-ink, text-ink-muted, text-danger, text-info, bg-highlight
+ *   shadow-paper-{flat,xs,sm,md,lg,inset}, rounded-paper, rounded-paper-md
+ *   font-typewriter, font-editorial
+ */
+
+/* ---------------------------------------------------------------- Themes */
+
+/* Parchment (default) */
+:root {
+  --paper-desk: #e7e1d8;
+  --paper-bg: #faf8f5;
+  --paper-bg-muted: #f2ece4;
+  --paper-bg-accent: #f5ecd5;
+  --paper-bg-sheet: #fdfdfd;
+  --paper-border: #2d2926;
+  --paper-border-muted: #a8a29e;
+  --paper-ink-primary: #1c1917;
+  --paper-ink-muted: #78716c;
+  --paper-ink-danger: #b91c1c;
+  --paper-ink-info: #1d4ed8;
+  --paper-highlight: #fef08a;
+  --paper-texture: #d6cfc7;
+  --paper-inset: rgba(0, 0, 0, 0.12);
+  --paper-grain-opacity: 0.18;
+}
+
+/* White copy paper */
+.paper-copy,
+[data-paper-theme="copy"] {
+  --paper-desk: #e4e4e7;
+  --paper-bg: #ffffff;
+  --paper-bg-muted: #f4f4f5;
+  --paper-bg-accent: #fef9c3;
+  --paper-bg-sheet: #ffffff;
+  --paper-border: #27272a;
+  --paper-border-muted: #a1a1aa;
+  --paper-ink-primary: #18181b;
+  --paper-ink-muted: #71717a;
+  --paper-texture: #e4e4e7;
+  --paper-grain-opacity: 0.08;
+}
+
+/* Drafting blueprint (dark) — also applied by the conventional `.dark` class */
+.dark,
+.paper-blueprint,
+[data-paper-theme="blueprint"] {
+  --paper-desk: #152b47;
+  --paper-bg: #1e3a5f;
+  --paper-bg-muted: #193152;
+  --paper-bg-accent: #27497a;
+  --paper-bg-sheet: #213f67;
+  --paper-border: #dce7f5;
+  --paper-border-muted: #6b8ab0;
+  --paper-ink-primary: #f0f5fc;
+  --paper-ink-muted: #a9bdd6;
+  --paper-ink-danger: #fca5a5;
+  --paper-ink-info: #93c5fd;
+  --paper-highlight: #6b6420;
+  --paper-texture: #35598a;
+  --paper-inset: rgba(0, 0, 0, 0.28);
+  --paper-grain-opacity: 0.1;
+}
+
+/* ------------------------------------------------------ Tailwind mapping */
+
+@theme inline {
+  --color-desk: var(--paper-desk);
+  --color-paper: var(--paper-bg);
+  --color-paper-muted: var(--paper-bg-muted);
+  --color-paper-accent: var(--paper-bg-accent);
+  --color-paper-sheet: var(--paper-bg-sheet);
+  --color-pencil: var(--paper-border);
+  --color-carbon: var(--paper-border-muted);
+  --color-ink: var(--paper-ink-primary);
+  --color-ink-muted: var(--paper-ink-muted);
+  --color-danger: var(--paper-ink-danger);
+  --color-info: var(--paper-ink-info);
+  --color-highlight: var(--paper-highlight);
+
+  /* Hard-offset "stamp" shadows: stacked cardstock, never blurred */
+  --shadow-paper-flat: 0px 0px 0px 0px transparent;
+  --shadow-paper-xs: 1px 1px 0px 0px var(--paper-border);
+  --shadow-paper-sm: 2px 2px 0px 0px var(--paper-border);
+  --shadow-paper-md: 3px 3px 0px 0px var(--paper-border);
+  --shadow-paper-lg: 5px 5px 0px 0px var(--paper-border);
+  --shadow-paper-inset: inset 1.5px 1.5px 0px 0px var(--paper-inset);
+
+  --radius-paper: 2px;
+  --radius-paper-md: 4px;
+
+  --font-typewriter: "Courier Prime", ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+  --font-editorial: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, ui-serif, serif;
+}
+
+/* ------------------------------------------------------------------ Base */
+
+@layer base {
+  ::selection {
+    background-color: var(--paper-highlight);
+    color: var(--paper-ink-primary);
+  }
+}
+
+/* ------------------------------------------------------------- Textures */
+
+/* Dotted bullet-journal grid */
+@utility paper-dots {
+  background-image: radial-gradient(var(--paper-texture) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Ruled notebook lines on a 24px (1.5rem) rhythm */
+@utility paper-ruled {
+  background-image: linear-gradient(to bottom, transparent calc(1.5rem - 1px), var(--paper-texture) calc(1.5rem - 1px));
+  background-size: 100% 1.5rem;
+  background-attachment: local;
+}
+
+/* Engineering graph paper */
+@utility paper-grid {
+  background-image:
+    linear-gradient(to right, var(--paper-texture) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--paper-texture) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Fibrous paper grain (SVG turbulence) */
+@utility paper-grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: var(--paper-grain-opacity);
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* -------------------------------------------------------------- Motifs */
+
+/* Strip of washi tape across the top edge */
+@utility washi-tape {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    width: 4.5rem;
+    height: 1.25rem;
+    translate: -50% 0;
+    rotate: -2deg;
+    background-color: color-mix(in oklab, var(--paper-highlight) 55%, transparent);
+    border-inline: 1px dashed color-mix(in oklab, var(--paper-border) 30%, transparent);
+    backdrop-filter: blur(0.5px);
+    pointer-events: none;
+  }
+}
+
+/* Dog-eared (folded) top-right corner */
+@utility dog-ear {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1.5px;
+    right: -1.5px;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: linear-gradient(225deg, var(--paper-desk) 50%, var(--paper-bg-muted) 50%);
+    border-bottom: 1.5px solid var(--paper-border);
+    border-left: 1.5px solid var(--paper-border);
+    border-bottom-left-radius: 2px;
+    pointer-events: none;
+  }
+}
+
+/* Torn / deckled bottom edge */
+@utility torn-edge {
+  --torn-size: 8px;
+  mask: conic-gradient(from -45deg at bottom, transparent, black 1deg 89deg, transparent 90deg) 50% / calc(var(--torn-size) * 2) 100%;
+}
+
+/* Subtle ink bleed on type */
+@utility ink-bleed {
+  text-shadow: 0 0 0.6px currentColor;
+}
