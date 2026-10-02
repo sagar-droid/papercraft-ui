@@ -12,6 +12,16 @@ const cardVariants = cva(
         sm: "shadow-paper-sm",
         md: "shadow-paper-md",
         lg: "shadow-paper-lg",
+        stack: "shadow-paper-stack",
+      },
+      cut: {
+        straight: "",
+        rough: "paper-rough",
+      },
+      fold: {
+        none: "",
+        horizontal: "paper-crease",
+        vertical: "paper-crease-v",
       },
       texture: {
         none: "",
@@ -30,17 +40,19 @@ const cardVariants = cva(
       elevation: "md",
       texture: "none",
       accent: "none",
+      cut: "straight",
+      fold: "none",
     },
   },
 );
 
 type CardProps = React.ComponentProps<"div"> & VariantProps<typeof cardVariants>;
 
-function Card({ className, elevation, texture, accent, ...props }: CardProps) {
+function Card({ className, elevation, texture, accent, cut, fold, ...props }: CardProps) {
   return (
     <div
       data-slot="card"
-      className={cn(cardVariants({ elevation, texture, accent }), className)}
+      className={cn(cardVariants({ elevation, texture, accent, cut, fold }), className)}
       {...props}
     />
   );

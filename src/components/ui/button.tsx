@@ -7,7 +7,7 @@ const buttonVariants = cva(
   [
     "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap select-none",
     "font-typewriter text-sm font-bold tracking-tight text-ink",
-    "transition-[translate,box-shadow,background-color,border-color] duration-75",
+    "transition-[translate,rotate,box-shadow,background-color,border-color] duration-75",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dashed focus-visible:outline-pencil",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -24,7 +24,7 @@ const buttonVariants = cva(
         /** Solid ink stamp for the primary action. */
         ink: [
           "rounded-paper border-[1.5px] border-pencil bg-ink text-paper shadow-paper-sm",
-          "hover:translate-x-px hover:translate-y-px hover:shadow-paper-xs",
+          "hover:translate-x-px hover:translate-y-px hover:-rotate-1 hover:shadow-paper-xs",
           "active:translate-x-[2px] active:translate-y-[2px] active:shadow-paper-flat",
         ],
         /** Crimson stamp for destructive actions. */

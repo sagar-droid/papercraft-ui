@@ -7,9 +7,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PaperClip } from "@/components/ui/paper-clip";
 import { Separator } from "@/components/ui/separator";
 import { StickyNote } from "@/components/ui/sticky-note";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tape } from "@/components/ui/tape";
 import { Textarea } from "@/components/ui/textarea";
 
 const THEMES = [
@@ -101,6 +103,54 @@ export function App() {
               <CardContent>
                 Mark the <mark className="bg-highlight px-0.5 text-ink">important bit</mark> with highlighter wax.
               </CardContent>
+            </Card>
+          </div>
+        </Section>
+
+        <Section title="Edges, folds & fasteners">
+          <div className="grid gap-10 md:grid-cols-3">
+            <Card elevation="stack">
+              <PaperClip />
+              <CardHeader>
+                <CardTitle>Stacked & clipped</CardTitle>
+                <CardDescription>elevation="stack" + PaperClip</CardDescription>
+              </CardHeader>
+              <CardContent>Two sheets peek out underneath, pinned with a wire clip.</CardContent>
+            </Card>
+            <Card fold="horizontal" texture="ruled">
+              <Tape position="top-left" color="scotch" />
+              <Tape position="top-right" color="scotch" />
+              <CardHeader>
+                <CardTitle>Folded letter</CardTitle>
+                <CardDescription>fold="horizontal" + scotch tape</CardDescription>
+              </CardHeader>
+              <CardContent>Creased once to fit the envelope, then taped flat again at both corners.</CardContent>
+            </Card>
+            <Card cut="rough" elevation="sm">
+              <Tape color="pink" />
+              <CardHeader>
+                <CardTitle>Hand-cut</CardTitle>
+                <CardDescription>cut="rough" + pink washi</CardDescription>
+              </CardHeader>
+              <CardContent>Scissors, not a guillotine. No two corners agree.</CardContent>
+            </Card>
+          </div>
+          <div className="flex flex-wrap items-center gap-10 pt-4">
+            <div className="stamp-edge flex size-28 flex-col items-center justify-center bg-danger p-4 text-center font-typewriter text-paper-sheet">
+              <span className="text-2xl font-bold">2¢</span>
+              <span className="text-[10px] tracking-widest uppercase">Air mail</span>
+            </div>
+            <div className="torn-edge bg-paper-sheet px-5 pt-4 pb-6 font-typewriter text-xs shadow-paper-xs">
+              RECEIPT No. 0042
+              <br />1 × ream, cream ..... $4.00
+            </div>
+            <StickyNote color="blue" tilt="right">
+              <PaperClip position="right" color="red" />
+              Pinned with a red clip.
+            </StickyNote>
+            <Card fold="vertical" className="w-56">
+              <Tape color="kraft" />
+              <CardContent className="py-2">A bi-fold brochure, kraft tape.</CardContent>
             </Card>
           </div>
         </Section>

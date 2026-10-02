@@ -9,8 +9,12 @@ import { extendTailwindMerge } from "tailwind-merge";
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      shadow: ["paper-flat", "paper-xs", "paper-sm", "paper-md", "paper-lg", "paper-inset"],
+      shadow: ["paper-flat", "paper-xs", "paper-sm", "paper-md", "paper-lg", "paper-inset", "paper-stack"],
       radius: ["paper", "paper-md"],
+    },
+    // paper-rough is a custom radius utility, so it should replace rounded-* classes
+    classGroups: {
+      rounded: ["paper-rough"],
     },
   },
 });

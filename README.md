@@ -65,16 +65,29 @@ import { Button, Card, CardContent } from "papercraft-ui";
 | `text-danger` / `text-info` | `--paper-ink-danger/info` | Crimson / indigo stamps |
 | `bg-highlight` | `--paper-highlight` | Highlighter wax, `::selection` |
 | `shadow-paper-{flat,xs,sm,md,lg,inset}` | | 0 / 1 / 2 / 3 / 5px hard offsets, debossed inset |
+| `shadow-paper-stack` | | Two sheets peeking out underneath |
 | `rounded-paper` / `rounded-paper-md` | | 2px / 4px |
 | `font-typewriter` / `font-editorial` | | Mono labels / serif prose |
 
 **Themes:** parchment is the default. Add `.paper-copy` for white copy paper, or `.paper-blueprint` (or `.dark`) for drafting blueprint, on any ancestor. You can also use `data-paper-theme="copy|blueprint"`. Change any `--paper-*` variable to make your own theme.
 
-**Utilities:** `paper-dots`, `paper-ruled`, `paper-grid`, `paper-grain`, `washi-tape`, `dog-ear`, `torn-edge`, `ink-bleed`.
+**Utilities:** `paper-dots`, `paper-ruled`, `paper-grid`, `paper-grain`, `washi-tape`, `dog-ear`, `torn-edge`, `ink-bleed`, `paper-rough` (hand-cut corners), `paper-crease` / `paper-crease-v` (fold line), `stamp-edge` (postage perforations; size via `--stamp-r`), `paper-tape` (torn-end tape strip).
+
+Some utilities draw with pseudo-elements, so two that use the same one can't go on the same element. `washi-tape` and `dog-ear` use `::before`. `paper-grain` and `paper-crease*` use `::after`. `stamp-edge` and `torn-edge` are masks, so they also clip any border or shadow on the element.
 
 ## Components
 
-alert · badge · button · card · checkbox · input · label · separator · sticky-note · tabs · textarea
+alert · badge · button · card · checkbox · input · label · paper-clip · separator · sticky-note · tabs · tape · textarea
+
+`Tape` and `PaperClip` position themselves absolutely, so put them inside a positioned parent such as `Card` or `StickyNote`:
+
+```tsx
+<Card elevation="stack" fold="horizontal" cut="rough">
+  <PaperClip position="left" color="brass" />
+  <Tape position="top-right" color="scotch" />
+  …
+</Card>
+```
 
 ## Development
 

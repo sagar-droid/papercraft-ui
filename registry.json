@@ -16,7 +16,7 @@
       "dependencies": ["class-variance-authority"]
     },
     "card": {
-      "description": "A sheet of cardstock with optional texture, washi tape or dog-ear.",
+      "description": "A sheet of cardstock with optional texture, tape, dog-ear, fold, rough cut or stack.",
       "files": ["card.tsx"],
       "dependencies": ["class-variance-authority"]
     },
@@ -35,6 +35,11 @@
       "files": ["label.tsx"],
       "dependencies": []
     },
+    "paper-clip": {
+      "description": "Wire paper clip that pins a card or note.",
+      "files": ["paper-clip.tsx"],
+      "dependencies": ["class-variance-authority"]
+    },
     "separator": {
       "description": "Perforated, dotted, solid or double rule.",
       "files": ["separator.tsx"],
@@ -49,6 +54,11 @@
       "description": "Manila-folder tabs with keyboard navigation.",
       "files": ["tabs.tsx"],
       "dependencies": []
+    },
+    "tape": {
+      "description": "Washi, scotch or kraft tape with torn ends.",
+      "files": ["tape.tsx"],
+      "dependencies": ["class-variance-authority"]
     },
     "textarea": {
       "description": "Boxed or ruled notebook textarea.",
